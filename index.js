@@ -9,6 +9,7 @@ const deliveriesFilePath = "./src/data/deliveries.csv"
 
 const outputPath1 = "./src/public/output/matchesPerYear.json"
 const outputPath2 = "./src/public/output/matchesWonPerTeamPerYear.json"
+const outputPath3 = "./src/public/output/extraRunsPerTeam.json"
 
 const matches = []
 const deliveries = []
@@ -42,7 +43,14 @@ fs.createReadStream(matchFilePath).pipe(csv({}))
 
                 const extraRunsPerTeam = getExtraRunsPerTeam(deliveries, matches)
 
-                console.log(extraRunsPerTeam)
+                fs.writeFile(outputPath3, JSON.stringify(extraRunsPerTeam, null, 2), (error) => {
+                    if(error) {
+                        console.error("Error writing JSON file for problem 3", error)
+                    } else {
+                        console.log("JSON data written to ", outputPath3)
+                    }
+                })
+                
             })
        
         
