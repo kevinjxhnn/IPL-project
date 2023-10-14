@@ -3,6 +3,7 @@ const csv = require("csv-parser")
 const { getNumberOfMatchesPerYear } = require("./src/server/1-matches-per-year")
 const { getMatchesWonPerTeamPerYear } = require("./src/server/2-matches-won-per-team-per-year")
 const { getExtraRunsPerTeam } = require("./src/server/3-extra-runs-per-team")
+const { getTenEconomincalBowler } = require("./src/server/4-top-ten-economical-bowler")
 
 const matchFilePath = "./src/data/matches.csv"
 const deliveriesFilePath = "./src/data/deliveries.csv"
@@ -10,6 +11,7 @@ const deliveriesFilePath = "./src/data/deliveries.csv"
 const outputPath1 = "./src/public/output/matchesPerYear.json"
 const outputPath2 = "./src/public/output/matchesWonPerTeamPerYear.json"
 const outputPath3 = "./src/public/output/extraRunsPerTeam.json"
+const outputPath4 = "./src/public/output/tenEconomicalBowlers.json"
 
 const matches = []
 const deliveries = []
@@ -51,6 +53,16 @@ fs.createReadStream(matchFilePath).pipe(csv({}))
                     }
                 })
                 
+
+                const tenEconomicalBowlers = getTenEconomincalBowler(matches, deliveries)
+
+                fs.writeFile(outputPath4, JSON.stringify(tenEconomicalBowlers, null, 2), (error) => {
+                    if(error) {
+                        console.error("Error writing JSON file for problem 4", error)
+                    } else {
+                        console.log("JSON data written to ", outputPath4)
+                    }
+                })
             })
        
         
