@@ -6,6 +6,7 @@ const { getExtraRunsPerTeam } = require("./src/server/3-extra-runs-per-team")
 const { getTenEconomincalBowler } = require("./src/server/4-top-ten-economical-bowler")
 const { findTeamsWhoWonTossAndMatch } = require("./src/server/5-toss-and-match-winner")
 const { getHighestPlayerOfMatch } = require("./src/server/6-highest-player-of-match")
+const { getStrikeRateBatsman } = require("./src/server/7-strike-rate-batsman")
 
 const matchFilePath = "./src/data/matches.csv"
 const deliveriesFilePath = "./src/data/deliveries.csv"
@@ -16,6 +17,7 @@ const outputPath3 = "./src/public/output/extraRunsPerTeam.json"
 const outputPath4 = "./src/public/output/tenEconomicalBowlers.json"
 const outputPath5 = "./src/public/output/teamsWhoWonTossAndMatch.json"
 const outputPath6 = "./src/public/output/highestPlayerOfMatchPerSeason.json"
+const outputPath7 = "./src/public/output/strikeRateBatsman.json"
 
 
 const matches = []
@@ -88,8 +90,19 @@ fs.createReadStream(matchFilePath).pipe(csv({}))
                         console.log("JSON data written to ", outputPath6)
                     }
                 })
+
+                const strikeRateBatsman = getStrikeRateBatsman(matches, deliveries, "DA Warner")
+
+                fs.writeFile(outputPath7, JSON.stringify(strikeRateBatsman, null, 2), (error) => {
+                    if(error) {
+                        console.error("Error writing JSON file for problem 7", error)
+                    } else {
+                        console.log("JSON data written to ", outputPath7)
+                    }
+                })
             })
-       
+            
+           
             
     })
 
