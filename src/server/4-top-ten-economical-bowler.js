@@ -16,11 +16,11 @@ function getTenEconomincalBowler(matches, deliveries){
             const isWideOrNoBall = delivery.wide_runs > 0 || delivery.noball_runs > 0 
 
             if(!bowlerData[bowler]) {
-                bowlerData[bowler] = { 'runs' : runs, 'overs' : isWideOrNoBall ? 0 : 1}
+                bowlerData[bowler] = { 'runs' : runs, 'balls' : isWideOrNoBall ? 0 : 1}
 
             } else {
                 bowlerData[bowler].runs += runs
-                bowlerData[bowler].overs += isWideOrNoBall ? 0 : 1
+                bowlerData[bowler].balls += isWideOrNoBall ? 0 : 1
 
             }
         }
@@ -31,9 +31,9 @@ function getTenEconomincalBowler(matches, deliveries){
     const economicalBowlers = []
 
     for(const bowler in bowlerData){
-        const {runs, overs} = bowlerData[bowler]
+        const {runs, balls} = bowlerData[bowler]
 
-        const economyRate = (runs/overs).toFixed(2)
+        const economyRate = ((runs/balls) * 6 ).toFixed(2)
 
         economicalBowlers.push({bowler, economyRate})
     }

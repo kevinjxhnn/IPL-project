@@ -17,7 +17,6 @@ function findMostDismissals(deliveries) {
         }
     });
 
-    console.log(dismissalData)
 
     const maxDismissal = Object.keys(dismissalData).reduce((a, b) =>
         dismissalData[a] > dismissalData[b] ? a : b

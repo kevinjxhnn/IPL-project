@@ -513,7 +513,7 @@ const deliveries = [
       }
     ]
 
-const expected = [{"bowler": "B Kumar", "economyRate": "1.25"}, {"bowler": "Mustafizur Rahman", "economyRate": "2.00"}]
+const expected = [{"bowler": "B Kumar", "economyRate": "7.50"}, {"bowler": "Mustafizur Rahman", "economyRate": "12.00"}]
 
 
 test('Returns the top ten economical bowlers', () => {
