@@ -7,6 +7,7 @@ const { getTenEconomincalBowler } = require("./src/server/4-top-ten-economical-b
 const { findTeamsWhoWonTossAndMatch } = require("./src/server/5-toss-and-match-winner")
 const { getHighestPlayerOfMatch } = require("./src/server/6-highest-player-of-match")
 const { getStrikeRateBatsman } = require("./src/server/7-strike-rate-batsman")
+const { findMostDismissals } = require("./src/server/8-most-dismissed")
 
 const matchFilePath = "./src/data/matches.csv"
 const deliveriesFilePath = "./src/data/deliveries.csv"
@@ -100,6 +101,8 @@ fs.createReadStream(matchFilePath).pipe(csv({}))
                         console.log("JSON data written to ", outputPath7)
                     }
                 })
+
+                const mostDismissals = findMostDismissals(deliveries) 
             })
             
            
