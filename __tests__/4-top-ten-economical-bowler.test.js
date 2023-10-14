@@ -516,6 +516,6 @@ const deliveries = [
 const expected = [{"bowler": "B Kumar", "economyRate": "1.25"}, {"bowler": "Mustafizur Rahman", "economyRate": "2.00"}]
 
 
-test('Returns the number of matches per year', () => {
+test('Returns the top ten economical bowlers', () => {
     expect(getTenEconomincalBowler(matches, deliveries)).toEqual(expected)
 })

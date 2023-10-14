@@ -13,6 +13,6 @@ const expected = {
 }
 
 
-test('Returns the number of matches per year', () => {
+test('Returns the number of matches won per team per year', () => {
     expect(getMatchesWonPerTeamPerYear(matchesTest)).toEqual(expected)
 })

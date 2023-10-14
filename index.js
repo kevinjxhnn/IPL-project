@@ -5,6 +5,7 @@ const { getMatchesWonPerTeamPerYear } = require("./src/server/2-matches-won-per-
 const { getExtraRunsPerTeam } = require("./src/server/3-extra-runs-per-team")
 const { getTenEconomincalBowler } = require("./src/server/4-top-ten-economical-bowler")
 const { findTeamsWhoWonTossAndMatch } = require("./src/server/5-toss-and-match-winner")
+const { getHighestPlayerOfMatch } = require("./src/server/6-highest-player-of-match")
 
 const matchFilePath = "./src/data/matches.csv"
 const deliveriesFilePath = "./src/data/deliveries.csv"
@@ -14,6 +15,7 @@ const outputPath2 = "./src/public/output/matchesWonPerTeamPerYear.json"
 const outputPath3 = "./src/public/output/extraRunsPerTeam.json"
 const outputPath4 = "./src/public/output/tenEconomicalBowlers.json"
 const outputPath5 = "./src/public/output/teamsWhoWonTossAndMatch.json"
+const outputPath6 = "./src/public/output/highestPlayerOfMatchPerSeason.json"
 
 
 const matches = []
@@ -77,9 +79,18 @@ fs.createReadStream(matchFilePath).pipe(csv({}))
                     }
                 })
                 
+                const highestPlayerOfMatchPerSeason = getHighestPlayerOfMatch(matches)
+                
+                fs.writeFile(outputPath6, JSON.stringify(highestPlayerOfMatchPerSeason, null, 2), (error) => {
+                    if(error) {
+                        console.error("Error writing JSON file for problem 6", error)
+                    } else {
+                        console.log("JSON data written to ", outputPath6)
+                    }
+                })
             })
        
-        
+            
     })
 
 
