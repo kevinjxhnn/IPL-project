@@ -48,6 +48,6 @@ const expected = {
 }
 
 
-test('Returns the extra runs per team', () => {
+test('Return the most dismissals', () => {
     expect(findMostDismissals(deliveries)).toEqual(expected)
 })

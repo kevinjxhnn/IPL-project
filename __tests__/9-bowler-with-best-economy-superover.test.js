@@ -17,6 +17,6 @@ const expected = {
 }
 
 
-test('Returns the extra runs per team', () => {
+test('Returns the bowler with the best economy in super over', () => {
     expect(toFindBowlerWithTheBestEconomySuperOver(deliveries)).toEqual(expected)
 })
