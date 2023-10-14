@@ -4,6 +4,7 @@ const { getNumberOfMatchesPerYear } = require("./src/server/1-matches-per-year")
 const { getMatchesWonPerTeamPerYear } = require("./src/server/2-matches-won-per-team-per-year")
 const { getExtraRunsPerTeam } = require("./src/server/3-extra-runs-per-team")
 const { getTenEconomincalBowler } = require("./src/server/4-top-ten-economical-bowler")
+const { findTeamsWhoWonTossAndMatch } = require("./src/server/5-toss-and-match-winner")
 
 const matchFilePath = "./src/data/matches.csv"
 const deliveriesFilePath = "./src/data/deliveries.csv"
@@ -12,6 +13,8 @@ const outputPath1 = "./src/public/output/matchesPerYear.json"
 const outputPath2 = "./src/public/output/matchesWonPerTeamPerYear.json"
 const outputPath3 = "./src/public/output/extraRunsPerTeam.json"
 const outputPath4 = "./src/public/output/tenEconomicalBowlers.json"
+const outputPath5 = "./src/public/output/teamsWhoWonTossAndMatch.json"
+
 
 const matches = []
 const deliveries = []
@@ -63,6 +66,17 @@ fs.createReadStream(matchFilePath).pipe(csv({}))
                         console.log("JSON data written to ", outputPath4)
                     }
                 })
+
+                const teamsWhoWonTossAndMatch = findTeamsWhoWonTossAndMatch(matches)
+
+                fs.writeFile(outputPath5, JSON.stringify(teamsWhoWonTossAndMatch, null, 2), (error) => {
+                    if(error) {
+                        console.error("Error writing JSON file for problem 5", error)
+                    } else {
+                        console.log("JSON data written to ", outputPath5)
+                    }
+                })
+                
             })
        
         
