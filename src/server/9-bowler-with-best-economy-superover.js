@@ -1,49 +1,50 @@
-function toFindBowlerWithTheBestEconomySuperOver(deliveries){
-
+function toFindBowlerWithTheBestEconomySuperOver(deliveries) {
     const superOvers = deliveries.filter((delivery) => delivery.is_super_over == '1');
 
     if (superOvers.length === 0) {
         return "No super over";
     }
 
-    const bowlerStats = {};
+    const bowlerData = {};
 
-    // Calculating the runs and overs for each bowler
     superOvers.forEach((delivery) => {
         const bowler = delivery.bowler;
         const runsGiven = parseInt(delivery.total_runs, 10);
+        const isWideOrNoBall = delivery.wide_runs > 0 || delivery.noball_runs > 0;
 
-        if (!bowlerStats[bowler]) {
-            bowlerStats[bowler] = { runs: 0, balls: 0 };
+        if (!bowlerData[bowler]) {
+            bowlerData[bowler] = { runs: 0, balls: 0 };
         }
 
-        bowlerStats[bowler].runs += runsGiven;
-        bowlerStats[bowler].balls += 1;
+        bowlerData[bowler].runs += runsGiven;
+
+        if (!isWideOrNoBall) {
+            bowlerData[bowler].balls += 1;
+        }
     });
 
-    // Calculate the economy rate for each bowler
     const bowlersEconomy = {};
-    for (const bowler in bowlerStats) {
-        const runsConceded = bowlerStats[bowler].runs;
-        const ballsBowled = bowlerStats[bowler].balls;
+
+    for (const bowler in bowlerData) {
+        const runsConceded = bowlerData[bowler].runs;
+        const ballsBowled = bowlerData[bowler].balls;
         const economyRate = ((runsConceded / ballsBowled) * 6).toFixed(2);
         bowlersEconomy[bowler] = economyRate;
     }
 
-    // Find the bowler with the best economy rate
+    console.log(bowlersEconomy)
+
     let bestBowler = null;
     let bestEconomy = Infinity;
 
-
     for (const bowler in bowlersEconomy) {
-        if (bowlersEconomy[bowler] < bestEconomy) {
+        if (parseFloat(bowlersEconomy[bowler]) < parseFloat(bestEconomy)) {
             bestBowler = bowler;
             bestEconomy = bowlersEconomy[bowler];
         }
     }
 
-    return { "bowler" : bestBowler , "economy" : bestEconomy}
-
+    return { "bowler": bestBowler, "economy": bestEconomy };
 }
 
-module.exports = { toFindBowlerWithTheBestEconomySuperOver }
+module.exports = { toFindBowlerWithTheBestEconomySuperOver };
