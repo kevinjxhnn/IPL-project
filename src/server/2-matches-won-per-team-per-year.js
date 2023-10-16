@@ -14,7 +14,7 @@ function getMatchesWonPerTeamPerYear(result){
                 matchesWonPerTeamPerYear[year] = {}
             }
 
-            // If the team's entry for the season doesn't exist, initialize it to 1; otherwise, increment the count
+            // If the team's entry for the season doesn't exist, initialize it to 1, otherwise, increment the count
 
             if(!matchesWonPerTeamPerYear[year][winner]){
                 matchesWonPerTeamPerYear[year][winner] = 1
