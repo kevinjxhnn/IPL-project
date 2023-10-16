@@ -1,12 +1,12 @@
 function getTenEconomincalBowler(matches, deliveries){
 
-    // Filtering only the matches for 2015
+    // Filtering only the matches for 2015.
     const matches2015 = matches.filter((match) => match.season == 2015)
 
 
     const bowlerData = {}
 
-    // Calculating the runs and overs for each bowler
+    // Calculating the runs and overs for each bowler.
     deliveries.forEach((delivery) => {
         const match = matches2015.find((match) => match.id == delivery.match_id)
 
@@ -27,7 +27,7 @@ function getTenEconomincalBowler(matches, deliveries){
     });
 
 
-    // Calculating the economy rate
+    // Calculating the economy rate.
     const economicalBowlers = []
 
     for(const bowler in bowlerData){

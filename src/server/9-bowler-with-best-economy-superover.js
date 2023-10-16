@@ -1,4 +1,5 @@
 function toFindBowlerWithTheBestEconomySuperOver(deliveries) {
+    // Filtering the super overs.
     const superOvers = deliveries.filter((delivery) => delivery.is_super_over == '1');
 
     if (superOvers.length === 0) {
@@ -25,6 +26,7 @@ function toFindBowlerWithTheBestEconomySuperOver(deliveries) {
 
     const bowlersEconomy = {};
 
+    // Calculating the economy rate.
     for (const bowler in bowlerData) {
         const runsConceded = bowlerData[bowler].runs;
         const ballsBowled = bowlerData[bowler].balls;
@@ -37,6 +39,7 @@ function toFindBowlerWithTheBestEconomySuperOver(deliveries) {
     let bestBowler = null;
     let bestEconomy = Infinity;
 
+    // Finding out bowler with the best economy in super over.
     for (const bowler in bowlersEconomy) {
         if (parseFloat(bowlersEconomy[bowler]) < parseFloat(bestEconomy)) {
             bestBowler = bowler;

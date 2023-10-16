@@ -1,6 +1,7 @@
 function getHighestPlayerOfMatch(matches) {
     const playerOfTheMatchYear = {};
 
+    // Getting the count of each player of the match per season.
     matches.forEach((match) => {
         const year = match.season;
         const playerOfTheMatch = match.player_of_match;
@@ -20,6 +21,7 @@ function getHighestPlayerOfMatch(matches) {
 
     const result = {};
 
+    // Calculating the player with the most player of the match titles.
     for (const season in playerOfTheMatchYear) {
         const seasonData = playerOfTheMatchYear[season];
         const maxPlayer = Object.keys(seasonData).reduce((a, b) => (seasonData[a] > seasonData[b] ? a : b));

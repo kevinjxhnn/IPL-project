@@ -2,7 +2,7 @@ function getStrikeRateBatsman(matches, deliveries, batsmanName){
 
     batsmanData = {}
 
-    // Deliveries for the specified batsman
+    // Deliveries for the specified batsman.
     batsmanDeliveries = deliveries.filter((delivery) => delivery.batsman == batsmanName)
 
 
@@ -33,6 +33,7 @@ function getStrikeRateBatsman(matches, deliveries, batsmanName){
 
     const strikeRateData = {}
 
+    // Calculating the strike rate.
     for(const season in batsmanData){
         const runsMade = batsmanData[season].runs
         const noOfBalls = batsmanData[season].balls
