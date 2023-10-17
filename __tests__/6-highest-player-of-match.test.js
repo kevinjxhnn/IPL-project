@@ -1,5 +1,5 @@
 const { default: expect } = require("expect")
-const { getHighestPlayerOfMatch } = require("../src/server/6-highest-player-of-match")
+const { getHighestPOTMAwardsPerSeason } = require("../src/server/6-highest-player-of-match")
 
 
 const matches = [
@@ -16,13 +16,13 @@ const matches = [
 ];
 
 const expected = {
-    '2015': { 'player': 'SV Samson', 'awards': 2 },
-    '2016': { 'player': 'CJ Anderson', 'awards': 3 },
-    '2017': { 'player': 'Yuvraj Singh', 'awards': 5 },
+    '2015': { 'players': ['SV Samson'], 'awards': 2 },
+    '2016': { 'players': ['CJ Anderson'], 'awards': 3 },
+    '2017': { 'players': ['Yuvraj Singh'], 'awards': 5 },
 };
 
 
 
 test('Returns the highest player of the match for each season', () => {
-    expect(getHighestPlayerOfMatch(matches)).toEqual(expected)
+    expect(getHighestPOTMAwardsPerSeason(matches)).toEqual(expected)
 })

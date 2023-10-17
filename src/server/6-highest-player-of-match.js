@@ -1,10 +1,14 @@
-function getHighestPlayerOfMatch(matches) {
+function getHighestPOTMAwardsPerSeason(matches) {
     const playerOfTheMatchYear = {};
 
     // Getting the count of each player of the match per season.
     matches.forEach((match) => {
         const year = match.season;
         const playerOfTheMatch = match.player_of_match;
+
+        if(!playerOfTheMatch){
+            return
+        }
 
         if (playerOfTheMatch) {
             if (playerOfTheMatchYear[year]) {
@@ -24,12 +28,14 @@ function getHighestPlayerOfMatch(matches) {
     // Calculating the player with the most player of the match titles.
     for (const season in playerOfTheMatchYear) {
         const seasonData = playerOfTheMatchYear[season];
-        const maxPlayer = Object.keys(seasonData).reduce((a, b) => (seasonData[a] > seasonData[b] ? a : b));
-        result[season] = { player: maxPlayer, awards: seasonData[maxPlayer] };
+        const maxAwards = Math.max(...Object.values(seasonData));
+        const playersWithMaxAwards = Object.keys(seasonData).filter((player) => seasonData[player] === maxAwards);
+        result[season] = { players: playersWithMaxAwards, awards: maxAwards };
     }
+
 
     return result; 
 }
 
 
-module.exports = { getHighestPlayerOfMatch }
+module.exports = { getHighestPOTMAwardsPerSeason }

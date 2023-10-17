@@ -34,8 +34,6 @@ function toFindBowlerWithTheBestEconomySuperOver(deliveries) {
         bowlersEconomy[bowler] = economyRate;
     }
 
-    console.log(bowlersEconomy)
-
     let bestBowler = null;
     let bestEconomy = Infinity;
 

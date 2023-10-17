@@ -1,5 +1,5 @@
 const { default: expect } = require("expect")
-const { getTenEconomincalBowler } = require("../src/server/4-top-ten-economical-bowler")
+const { getTenEconomicalBowler } = require("../src/server/4-top-ten-economical-bowler")
 
 
 const matches = [
@@ -517,5 +517,5 @@ const expected = [{"bowler": "B Kumar", "economyRate": "7.50"}, {"bowler": "Must
 
 
 test('Returns the top ten economical bowlers', () => {
-    expect(getTenEconomincalBowler(matches, deliveries)).toEqual(expected)
+    expect(getTenEconomicalBowler(matches, deliveries)).toEqual(expected)
 })

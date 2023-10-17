@@ -1,8 +1,8 @@
-function getNumberOfMatchesPerYear(result){
+function getNumberOfMatchesPerYear(matches){
     const matchesPerYear = {}
 
     // Filtering through each math and getting the count.
-    result.forEach(element => {
+    matches.forEach(element => {
         const year = element.season
 
         if(matchesPerYear[year]){
