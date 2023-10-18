@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "eslint": "^8.51.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "jest": "^29.7.0",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3"
@@ -12,14 +12,15 @@
       "prettier --write ."
     ]
   },
-  "scripts": {
-    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
-    "test": "jest"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "scripts": {
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "test": "jest",
+    "prepare": "husky install"
   },
   "name": "ipl-project",
   "version": "1.0.0",

@@ -1,8 +1,8 @@
 function getStrikeRateBatsman(matches, deliveries, batsmanName) {
-  batsmanData = {};
+  let batsmanData = {};
 
   // Deliveries for the specified batsman.
-  batsmanDeliveries = deliveries.filter(
+  let batsmanDeliveries = deliveries.filter(
     (delivery) => delivery.batsman == batsmanName
   );
 
