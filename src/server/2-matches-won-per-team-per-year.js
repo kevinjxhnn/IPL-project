@@ -1,30 +1,26 @@
-function getMatchesWonPerTeamPerYear(result){
+function getMatchesWonPerTeamPerYear(result) {
+  const matchesWonPerTeamPerYear = {};
 
-    const matchesWonPerTeamPerYear = {}
+  result.forEach((element) => {
+    const year = element.season;
+    const winner = element.winner;
 
-    result.forEach((element) => {
-        
-        const year = element.season
-        const winner = element.winner
+    if (year && winner) {
+      // Initialize the year entry if it doesn't exist
+      if (!matchesWonPerTeamPerYear[year]) {
+        matchesWonPerTeamPerYear[year] = {};
+      }
 
-        if(year && winner){
+      // If the team's entry for the season doesn't exist, initialize it to 1, otherwise, increment the count
+      if (!matchesWonPerTeamPerYear[year][winner]) {
+        matchesWonPerTeamPerYear[year][winner] = 1;
+      } else {
+        matchesWonPerTeamPerYear[year][winner] += 1;
+      }
+    }
+  });
 
-            // Initialize the year entry if it doesn't exist
-            if(!matchesWonPerTeamPerYear[year]){
-                matchesWonPerTeamPerYear[year] = {}
-            }
-
-            // If the team's entry for the season doesn't exist, initialize it to 1, otherwise, increment the count
-            if(!matchesWonPerTeamPerYear[year][winner]){
-                matchesWonPerTeamPerYear[year][winner] = 1
-            
-            } else {
-                matchesWonPerTeamPerYear[year][winner] += 1
-            }
-        }
-    });
-
-    return matchesWonPerTeamPerYear
+  return matchesWonPerTeamPerYear;
 }
 
-module.exports = { getMatchesWonPerTeamPerYear }
+module.exports = { getMatchesWonPerTeamPerYear };
