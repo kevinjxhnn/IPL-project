@@ -44,7 +44,10 @@ const deliveries = [
 
 const expected = {
     "frequency": 2,
-    "mostFrequentDismissal": "PlayerA dismissed by PlayerX"
+    "mostFrequentDismissal": {
+        "batsman": "PlayerA",
+        "bowler": "PlayerX",
+    }
 }
 
 

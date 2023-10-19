@@ -8,12 +8,14 @@ function findMostDismissals(deliveries) {
 
     // Calculating the count of the most dismissal
     if (dismissalKind && dismissalKind !== "run out") {
-      const key = `${batsman} dismissed by ${bowler}`;
+      const key = { batsman, bowler }; // Change the key to an object
 
-      if (dismissalData[key]) {
-        dismissalData[key]++;
+      const keyString = JSON.stringify(key); 
+
+      if (dismissalData[keyString]) {
+        dismissalData[keyString]++;
       } else {
-        dismissalData[key] = 1;
+        dismissalData[keyString] = 1;
       }
     }
   });
@@ -23,7 +25,7 @@ function findMostDismissals(deliveries) {
   );
 
   return {
-    mostFrequentDismissal: maxDismissal,
+    mostFrequentDismissal: JSON.parse(maxDismissal), 
     frequency: dismissalData[maxDismissal],
   };
 }

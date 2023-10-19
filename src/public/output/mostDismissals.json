@@ -1,4 +1,7 @@
 {
-  "mostFrequentDismissal": "MS Dhoni dismissed by Z Khan",
+  "mostFrequentDismissal": {
+    "batsman": "MS Dhoni",
+    "bowler": "Z Khan"
+  },
   "frequency": 7
 }
