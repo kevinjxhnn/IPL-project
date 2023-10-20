@@ -283,6 +283,7 @@ function visualiseStrikeRateBatsman(data) {
 
 async function generateGraphs() {
   try {
+    // Loading the data
     const extraRunsData = await readJsonFile('extraRunsPerTeam.json');
     const matchesPerYearData = await readJsonFile('matchesPerYear.json');
     const bowlerEconomyData = await readJsonFile(
@@ -303,6 +304,7 @@ async function generateGraphs() {
     );
     const strikeRateBatsmanData = await readJsonFile('strikeRateBatsman.json');
 
+    // Generating the graphs
     visualiseExtraRunsPerTeam(extraRunsData);
     visualiseMatchesPerYear(matchesPerYearData);
     visualiseBowlerWithBestEconomySuperOver(bowlerEconomyData);
@@ -312,6 +314,7 @@ async function generateGraphs() {
     visualiseMostDismissals(mostDismissalsData);
     visualiseTeamsWhoWonTossAndMatch(teamsWhoWonTossData);
     visualiseStrikeRateBatsman(strikeRateBatsmanData);
+
   } catch (err) {
     console.log(err);
   }
