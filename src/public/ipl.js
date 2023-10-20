@@ -316,7 +316,7 @@ async function generateGraphs() {
     visualiseStrikeRateBatsman(strikeRateBatsmanData);
 
   } catch (err) {
-    console.log(err);
+    console.log(`Error: ${err}`);
   }
 }
 
