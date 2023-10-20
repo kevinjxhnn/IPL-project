@@ -45,7 +45,18 @@ The project structure is organized as follows:
 - `package-lock.json`: Lock file for dependency versions.
 - `.gitignore`: Excludes unnecessary files from version control.
 
+## Adding Web App Functionality
 
+To add the web app functionality, follow these instructions:
+
+1. Create a new branch called `webapp` in your previously created IPL Project repository.
+2. Use a static webserver to serve your output JSON files. You can use a tool like `http-server` or Python's `http.server`. For example, to use Python's simple server, navigate to your `public/output` directory and run `python -m http.server` to serve your JSON files.
+3. Build a simple client web app that makes an HTTP GET request to get the JSON file and display the data as a visualization. You can use the Highcharts library to create visualizations. Highcharts is a popular JavaScript charting library that allows you to create interactive charts.
+4. The visualization should be done using Highcharts. You can include the Highcharts library in your web app by adding it to your HTML file using a `<script>` tag.
+5. Use JavaScript to make an HTTP GET request to fetch the JSON data, and then use Highcharts to create the desired visualizations based on the fetched data.
+6. You can run the index.html code in the public folder to run the webapp.
+
+With these steps, you'll have a web app that serves and visualizes the calculated IPL data using Highcharts.
 
 
 
