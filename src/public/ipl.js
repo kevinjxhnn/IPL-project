@@ -159,9 +159,13 @@ function visualiseHighestPlayerOfMatchPerSeason(data) {
 
 function visualizeMatchesPerTeamPerYear(data) {
   const years = Object.keys(data);
+  console.log(data);
+  console.log(years);
   const teams = [
     ...new Set(Object.values(data).flatMap((matches) => Object.keys(matches))),
   ];
+
+  console.log(teams);
 
   const seriesData = teams.map((team) => ({
     name: team,
@@ -246,7 +250,7 @@ function visualiseTeamsWhoWonTossAndMatch(data) {
   });
 }
 
-function visualiseStrikeRateBatsman(data){
+function visualiseStrikeRateBatsman(data) {
   const years = Object.keys(data);
   const strikeRates = years.map((year) => parseFloat(data[year]));
 
@@ -277,75 +281,40 @@ function visualiseStrikeRateBatsman(data){
   });
 }
 
-readJsonFile('extraRunsPerTeam.json')
-  .then((data) => {
-    visualiseExtraRunsPerTeam(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+async function generateGraphs() {
+  try {
+    const extraRunsData = await readJsonFile('extraRunsPerTeam.json');
+    const matchesPerYearData = await readJsonFile('matchesPerYear.json');
+    const bowlerEconomyData = await readJsonFile(
+      'bowlerWithBestEconomySuperOver.json',
+    );
+    const economicalBowlersData = await readJsonFile(
+      'tenEconomicalBowlers.json',
+    );
+    const highestPlayerOfMatchData = await readJsonFile(
+      'highestPlayerOfMatchPerSeason.json',
+    );
+    const matchesWonPerTeamData = await readJsonFile(
+      'matchesWonPerTeamPerYear.json',
+    );
+    const mostDismissalsData = await readJsonFile('mostDismissals.json');
+    const teamsWhoWonTossData = await readJsonFile(
+      'teamsWhoWonTossAndMatch.json',
+    );
+    const strikeRateBatsmanData = await readJsonFile('strikeRateBatsman.json');
 
-readJsonFile('matchesPerYear.json')
-  .then((data) => {
-    visualiseMatchesPerYear(data);
-  })
-  .catch((err) => {
+    visualiseExtraRunsPerTeam(extraRunsData);
+    visualiseMatchesPerYear(matchesPerYearData);
+    visualiseBowlerWithBestEconomySuperOver(bowlerEconomyData);
+    visualiseTenEconomicalBowlers(economicalBowlersData);
+    visualiseHighestPlayerOfMatchPerSeason(highestPlayerOfMatchData);
+    visualizeMatchesPerTeamPerYear(matchesWonPerTeamData);
+    visualiseMostDismissals(mostDismissalsData);
+    visualiseTeamsWhoWonTossAndMatch(teamsWhoWonTossData);
+    visualiseStrikeRateBatsman(strikeRateBatsmanData);
+  } catch (err) {
     console.log(err);
-  });
+  }
+}
 
-readJsonFile('bowlerWithBestEconomySuperOver.json')
-  .then((data) => {
-    visualiseBowlerWithBestEconomySuperOver(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-readJsonFile('tenEconomicalBowlers.json')
-  .then((data) => {
-    visualiseTenEconomicalBowlers(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-readJsonFile('highestPlayerOfMatchPerSeason.json')
-  .then((data) => {
-    visualiseHighestPlayerOfMatchPerSeason(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-readJsonFile('matchesWonPerTeamPerYear.json')
-  .then((data) => {
-    visualizeMatchesPerTeamPerYear(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-readJsonFile('mostDismissals.json')
-  .then((data) => {
-    visualiseMostDismissals(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-readJsonFile('teamsWhoWonTossAndMatch.json')
-  .then((data) => {
-    visualiseTeamsWhoWonTossAndMatch(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-readJsonFile('strikeRateBatsman.json')
-  .then((data) => {
-    console.log(data)
-    visualiseStrikeRateBatsman(data)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+generateGraphs();
