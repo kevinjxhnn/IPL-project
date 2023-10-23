@@ -52,12 +52,12 @@ To run the IPL Data Analysis Project, follow these steps:
 
 1. Clone the project repository from GitHub:
 
-   ```bash
-   git clone https://github.com/kevinjxhnn/IPL-project.git
+  ```bash
+  git clone https://github.com/kevinjxhnn/IPL-project.git
   ```
 
 2. Change your working directory to the project folder:
- ```bash
+  ```bash
    cd IPL-project
   ```
 
