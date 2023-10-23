@@ -52,11 +52,16 @@ The project structure is organized as follows:
 To run this IPL Data Analysis project and visualize the results, follow these steps:
 
 1. Clone the repository to your local machine:
+  ```
+  git clone https://github.com/kevinjxhnn/IPL-project.git
+  ```
 
 2. Navigate to the project directory:
 
 3. Install the project dependencies:
-
+  ```
+  npm install
+  ```
 4. Run the data analysis and calculations: (node src/server/index.js)
 
 This will execute the JavaScript files in the `server` directory to perform the data analysis and generate JSON files in the `public/output` directory.
