@@ -42,10 +42,37 @@ The project structure is organized as follows:
       - ... (and other JSON files)
 - `data/`: Contains the input data files `matches.csv` and `deliveries.csv`.
 - `package.json`: Specifies project dependencies.
+- `index.js`: The file to run to write the output in json format into output folder.
 - `package-lock.json`: Lock file for dependency versions.
 - `.gitignore`: Excludes unnecessary files from version control.
 
+## Running the Project
 
+To run the IPL Data Analysis Project, follow these steps:
 
+1. Clone the project repository from GitHub:
 
+   ```bash
+   git clone https://github.com/kevinjxhnn/IPL-project.git
+  ```
+
+2. Change your working directory to the project folder:
+
+```
+cd IPL-project
+```
+
+3. Install project dependencies using npm:
+
+```
+npm install
+```
+
+4. After installing the dependencies, you can run the project to calculate the IPL statistics by executing the index.js file using Node.js:
+```
+node index.js
+
+```
+
+5. Once the project is run, the calculated statistics will be stored in JSON files inside the public/output folder. You can access the results in these JSON files.
 
