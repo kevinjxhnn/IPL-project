@@ -40,23 +40,36 @@ The project structure is organized as follows:
     - `output/`: Stores JSON files with calculated statistics.
       - `matchesPerYear.json`: Contains the number of matches played per year.
       - ... (and other JSON files)
+    - `index.html`: Visualizes the JSON data in the `output` folder as graphs in the browser.
+
 - `data/`: Contains the input data files `matches.csv` and `deliveries.csv`.
 - `package.json`: Specifies project dependencies.
 - `package-lock.json`: Lock file for dependency versions.
 - `.gitignore`: Excludes unnecessary files from version control.
 
-## Adding Web App Functionality
+## Running the Project
 
-To add the web app functionality, follow these instructions:
+To run this IPL Data Analysis project and visualize the results, follow these steps:
 
-1. Create a new branch called `webapp` in your previously created IPL Project repository.
-2. Use a static webserver to serve your output JSON files. You can use a tool like `http-server` or Python's `http.server`. For example, to use Python's simple server, navigate to your `public/output` directory and run `python -m http.server` to serve your JSON files.
-3. Build a simple client web app that makes an HTTP GET request to get the JSON file and display the data as a visualization. You can use the Highcharts library to create visualizations. Highcharts is a popular JavaScript charting library that allows you to create interactive charts.
-4. The visualization should be done using Highcharts. You can include the Highcharts library in your web app by adding it to your HTML file using a `<script>` tag.
-5. Use JavaScript to make an HTTP GET request to fetch the JSON data, and then use Highcharts to create the desired visualizations based on the fetched data.
-6. You can run the index.html code in the public folder to run the webapp.
+1. Clone the repository to your local machine:
 
-With these steps, you'll have a web app that serves and visualizes the calculated IPL data using Highcharts.
+2. Navigate to the project directory:
 
+3. Install the project dependencies:
 
+4. Run the data analysis and calculations: (node src/server/index.js)
 
+This will execute the JavaScript files in the `server` directory to perform the data analysis and generate JSON files in the `public/output` directory.
+
+5. Open the visualization in a web browser:
+
+- Navigate to the `public` directory:
+  ```
+  cd src/public
+  ```
+
+- Start a simple web server (e.g., using Python) to view the visualization:
+
+  ```
+  http.server (or use live server)
+  ```
