@@ -25,12 +25,12 @@ const outputPath9 = "./src/public/output/bowlerWithBestEconomySuperOver.json"
 
 
 
-function writeJSONToFile(filename, data, description) {
-    fs.writeFile(filename, JSON.stringify(data, null, 2), (error) => {
+function writeJSONToFile(filePath, data, description) {
+    fs.writeFile(filePath, JSON.stringify(data, null, 2), (error) => {
         if (error) {
             console.error(`Error writing JSON file for ${description}`, error);
         } else {
-            console.log(`JSON data written to ${filename}`);
+            console.log(`JSON data written to ${filePath}`);
         }
     });
 }
