@@ -57,22 +57,20 @@ To run the IPL Data Analysis Project, follow these steps:
   ```
 
 2. Change your working directory to the project folder:
-
-```
-cd IPL-project
-```
+ ```bash
+   cd IPL-project
+  ```
 
 3. Install project dependencies using npm:
 
-```
-npm install
-```
+  ```bash
+  npm install
+  ```
 
 4. After installing the dependencies, you can run the project to calculate the IPL statistics by executing the index.js file using Node.js:
-```
-node index.js
-
-```
+  ```bash
+  node index.js
+  ```
 
 5. Once the project is run, the calculated statistics will be stored in JSON files inside the public/output folder. You can access the results in these JSON files.
 
