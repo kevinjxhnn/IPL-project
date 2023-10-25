@@ -56,17 +56,17 @@ To run this IPL Data Analysis project and visualize the results, follow these st
   git clone https://github.com/kevinjxhnn/IPL-project.git
   ```
 
-2. Navigate to the project directory:
-
-3. Install the project dependencies:
+2. Change your working directory to the project folder:
+  ```bash
+   cd IPL-project
   ```
-  npm install
+
+3. Install the http server:
   ```
-4. Run the data analysis and calculations: (node src/server/index.js)
+  npm install -g http-server
+  ```
 
-This will execute the JavaScript files in the `server` directory to perform the data analysis and generate JSON files in the `public/output` directory.
-
-5. Open the visualization in a web browser:
+4. Open the visualization in a web browser:
 
 - Navigate to the `public` directory:
   ```
@@ -76,5 +76,5 @@ This will execute the JavaScript files in the `server` directory to perform the 
 - Start a simple web server (e.g., using Python) to view the visualization:
 
   ```
-  http.server (or use live server)
+  http.server (or use live server extension)
   ```
